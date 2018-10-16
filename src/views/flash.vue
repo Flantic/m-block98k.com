@@ -27,7 +27,7 @@
                 <ul class="flash-list">
                     <li class="list-item">
                         <div class="time">11:32</div>
-                        <h1 class="title">动态丨D star 社区代表们和风末科技CEO张冰在肯尼亚展开的区块链行业交流访问活动圆满结束。</h1>
+                        <h1 class="title text-ov3">动态丨D star 社区代表们和风末科技CEO张冰在肯尼亚展开的区块链行业交流访问活动圆满结束。</h1>
                         <p class="content">D star 社区代表们和风末科技CEO张冰在肯尼亚展开的区块链行业交流访问活动圆满结束。本次交流访问得到了肯尼亚政府相关部门高度重视。访问活动全程参与官员有肯尼亚总统办公室、通讯部部长，肯尼亚区块链联盟主席，Nurucoin全球CEO等。两国区块链业者在政府部门大力支持下，就此达成全球战略布局。</p>
                         <div class="search">
                             <i class="icon-img icon-img-search2"></i>
@@ -36,7 +36,7 @@
                     </li>
                     <li class="list-item">
                         <div class="time">11:32</div>
-                        <h1 class="title">动态丨D star 社区代表们和风末科技CEO张冰在肯尼亚展开的区块链行业交流访问活动圆满结束。</h1>
+                        <h1 class="title text-ov3">动态丨D star 社区代表们和风末科技CEO张冰在肯尼亚展开的区块链行业交流访问活动圆满结束。</h1>
                         <p class="content">D star 社区代表们和风末科技CEO张冰在肯尼亚展开的区块链行业交流访问活动圆满结束。本次交流访问得到了肯尼亚政府相关部门高度重视。访问活动全程参与官员有肯尼亚总统办公室、通讯部部长，肯尼亚区块链联盟主席，Nurucoin全球CEO等。两国区块链业者在政府部门大力支持下，就此达成全球战略布局。</p>
                         <div class="search">
                             <i class="icon-img icon-img-search2"></i>
@@ -56,6 +56,7 @@
 </script>
 
 <style lang="scss" scoped>
+
     .app-flash-header {
         margin-bottom: .1rem;
         height: 1.9rem;
@@ -76,7 +77,6 @@
 
     .app-newsflash {
         display: flex;
-        flex-wrap: no-wrap;
         overflow: hidden;
         height: 1rem;
         padding: .25rem .2rem;
@@ -173,8 +173,9 @@
                 color: #292e32;
             }
             .content{
-                font-size: .3rem;
+                font-size: .26rem;
                 line-height: 1.5;
+                text-align: justify;
                 color: #545454;
             }
             .search{
@@ -182,9 +183,11 @@
                 right: 0;
                 bottom: .4rem;
                 color: #ccc;
-                line-height: .65rem;
+                padding: .2rem 0;
+                height: .66rem;
                 &>.icon-img {
                     margin-right: .24rem;
+                    vertical-align: bottom;
                 }
             }
         }

@@ -1,6 +1,6 @@
 <template>
     <div class="app-home">
-        <div class="app-header">
+        <div class="app-header" ref='appHeader'>
             <div class="app-header-warpper">
                 <div class="app-logo img-box">
                     <router-link to='/'>
@@ -9,10 +9,14 @@
                 </div>
                 <div class="app-search">
                     <div class="search-group">
-                        <input type="text" placeholder="区块链">
+                        <input type="text" 
+                            @focus="$refs['appHeader'].classList.add('isSearch')"
+                            placeholder="区块链">
                         <i class="icon-img icon-img-search"></i>
                     </div>
                 </div>
+                <div class="app-search-cancel"
+                    @click="$refs['appHeader'].classList.remove('isSearch')">取消</div>
             </div>
             <div class="app-home-menu">
                 <ul class="menu-list">
@@ -36,103 +40,24 @@
                     </li>
                 </ul>
             </div>
+            <div class="app-search-bg">
+                <p class="title">热门搜索</p>
+                <span class="label">比特币</span>
+                <span class="label">区块链</span>
+            </div>
         </div>
         <router-view></router-view>
     </div>
 </template>
 
 <script>
-    // import { swiper, swiperSlide } from 'vue-awesome-swiper' 
-    // import '../assets/lib/swiper-3.4.1.min.css'
-    // import BetterScroll from 'better-scroll'
-    // export default {
-    //     mounted() {
-    //         this.$nextTick(() => {
-    //             this.scroll = new BetterScroll(this.$refs.scrollDom, {
-    //                 probeType: 2,
-    //                 click: true
-    //             })
-    //             // this.scroll.scrollTo(0, 50,1000)
-    //             // console.log(this.scroll)
-    //             this.scroll.on('scroll',(pos)=>{
-    //                 // console.log(pos.y)
-    //                 // if(pos >= 50){
-    //                 //     this.scroll.scrollTo(0,50)
-    //                 //     setTimeOut(()=>{
-    //                 //         this.scroll.scrollTo(0,0)
-    //                 //     },1500)
-    //                 // }
-    //             })
-    //             this.scroll.on('beforeScrollStart',(pos)=>{
-    //                 // console.log('start',pos)
-    //             })
-    //             this.scroll.on('touchEnd',(pos)=>{
-    //                 // console.log(this.scroll)
-    //                 if(pos.y >= 50){
-    //                     this.$refs.scrollDom.classList.add('drop-down')
-    //                     this.$refs.dromDown.innerText = '正在刷新'
-    //                     setTimeout(()=>{
-    //                         this.$refs.scrollDom.classList.remove('drop-down')
-    //                         this.$refs.dromDown.innerText = '下拉刷新'
-    //                     },1500)
-    //                 }
-    //                 if((Math.abs(pos.y)+this.scroll.wrapperHeight) - this.scroll.scrollerHeight >= 50){
-    //                     console.log('上拉刷新')
-    //                     this.$refs.scrollDom.classList.add('pull-up')
-    //                     this.$refs.pullUp.innerText = '正在刷新'
-    //                     setTimeout(()=>{
-    //                         this.$refs.scrollDom.classList.remove('pull-up')
-    //                         this.$refs.pullUp.innerText = '上拉刷新'
-    //                     },1500)
-    //                 }
-    //             })
-    //         })
-    //     },
-    //     data(){
-    //         return{
-    //             bannerList:[{
-    //                 url:'',
-    //                 type: 0,
-    //                 id: 25
-    //             },{
-    //                 url:'',
-    //                 type: 1,
-    //                 id: 15
-    //             },{
-    //                 url:'',
-    //                 type: 0,
-    //                 id: 54
-    //             },{
-    //                 url:'',
-    //                 type: 1,
-    //                 id: 23
-    //             }],
-    //             flashList:[{
-    //                 id: 10,
-    //                 text:'1数字货币交易所黑马，币倍8月11日开启创世矿工'
-    //             },{
-    //                 id: 20,
-    //                 text:'2数字货币交易所黑马，币倍8月11日开启创世矿工'
-    //             },{
-    //                 id: 30,
-    //                 text:'3数字货币交易所黑马，币倍8月11日开启创世矿工'
-    //             },{
-    //                 id: 40,
-    //                 text:'4数字货币交易所黑马，币倍8月11日开启创世矿工'
-    //             }],
-    //             bannerOption:{},
-    //             flashOption:{
-    //                 direction: 'vertical',
-    //                 autoplay: 5000,
-    //                 loop: true
-    //             }
-    //         }
-    //     },
-    //     components: {
-    //         swiper,
-    //         swiperSlide
-    //     },
-    // }    
+    export default {
+        data(){
+            return {
+                searchShow: false
+            }
+        }
+    }
 </script>
 
 <style lang="scss" >
@@ -149,19 +74,66 @@
         left: 0;
         width: 100%;
         height: 1.8rem;
+        box-shadow: 0 2px 6px 0 rgba(117,117,117,0.10);
         z-index: 99;
+        .app-search-cancel{
+            display: none;
+            width: 1rem;
+            line-height: .6rem;
+            text-align: center;
+        }
+        .app-search-bg{
+            display: none;
+            width: 100%;
+            height: 100vh;
+            background: #f1f1f1;
+            padding: .15rem .2rem;
+            .title{
+                margin-bottom: .1rem;
+                font-size: .3rem;
+                color: #4e4e4e;
+                line-height: .6rem;
+            }
+            .label{
+                display: inline-block;
+                vertical-align: top;
+                margin: 0 .2rem .2rem 0;
+                font-size: .26rem;
+                background: #e7e7e7;
+                height: .5rem;
+                padding: 0 .3rem;
+                line-height: .5rem;
+                border-radius: .25rem;
+            }
+        }
+        &.isSearch {
+            .app-logo{
+                display: none;
+            }
+            .app-home-menu{
+                display: none;
+            }
+            .app-search-bg{
+                display: block;
+            }
+            .app-search-cancel{
+                display: block;
+            }
+        }
         .app-logo {
             width: 1.6rem; 
-            height: .58rem;
+            height: .6rem;
             background: #fff;
             margin-right: .12rem;
         }
         .app-search {
-            height: .58rem;
+            height: .6rem;
             flex-grow: 1;
+            transition: all .5s;
         }
         .search-group {
             position: relative;
+            height: 100%;
             input {
                 width: 100%;
                 height: 100%;
@@ -169,7 +141,14 @@
                 border-radius: .29rem;
                 background: #f1f1f1;
                 font-size: .3rem;
+                line-height: .3rem;
                 border: none;
+            }
+            input::-ms-input-placeholder{
+                line-height: .4rem;
+            }
+            input::-webkit-input-placeholder{
+                line-height: .4rem;
             }
             input:focus{
                 padding-left: .3rem;

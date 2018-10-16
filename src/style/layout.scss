@@ -11,6 +11,13 @@
      background: #f1f1f1;
  }
 
+#root{
+    position: relative;
+    margin: 0 auto;
+    max-width: 750px;
+    height: 100%;
+}
+
  /* clearfix [清除浮动]*/
  .clearfix:before,
  .clearfix:after {
@@ -31,7 +38,7 @@
      float: left;
  }
  
- .fl {
+ .fr {
      float: right;
  }
  
@@ -55,18 +62,21 @@
     display:-webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
+        text-overflow: ellipsis;
         overflow:hidden;
 }
 .text-ov3{
     display:-webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;
+        text-overflow: ellipsis;
         overflow:hidden;
 }
 .text-ov4{
     display:-webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 4;
+        text-overflow: ellipsis;
         overflow:hidden;
 }
 

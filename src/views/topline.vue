@@ -20,8 +20,11 @@
                         :options="flashOption"  
                         ref="flashSwiper"
                         class="swiper-no-swiping">  
-                        <swiper-slide v-for="(item,index) in flashList" :key="index">
-                            <router-link :to="`/flash?id=${item.id}`">
+                        <swiper-slide 
+                            v-for="(item,index) in flashList" 
+                            :key="index"
+                            class="text-ov1">
+                            <router-link :to="`/detail?id=${item.id}`">
                                 {{item.text}}
                             </router-link>
                         </swiper-slide>
@@ -45,16 +48,17 @@
                         </div>
                         <div class="content">
                             <div class="text">
-                                <router-link :to="`/detail?id=${i}`" class="text-ov2">
-                                    数字货币交易所黑马，币倍8月11日开启创世矿工。
-                                </router-link>
+                                <p class="text-ov2">
+                                    <router-link :to="`/detail?id=${i}`" >
+                                        数字货币交易所黑马，币倍8月11日开启创世矿工。
+                                    </router-link>
+                                </p>
                                 <div class="ft">
                                     <span class="label">置顶</span>
                                     1.6万阅读
                                 </div>
                             </div>
                             <div class="img img-box">
-                                
                                 <router-link :to="`/detail?id=${i}`" class="text-ov2">
                                     <img src="../assets/img/m_block98k_10.png" alt="">
                                 </router-link>
@@ -76,11 +80,11 @@
         mounted() {
             this.$nextTick(() => {
                 this.scroll = new BetterScroll(this.$refs.scrollDom, {
-                    probeType: 2,
-                    click: true
+                    probeType: 1,
+                    click: true,
                 })
                 this.scroll.on('scroll',(pos)=>{
-
+                    console.log(pos.y)
                 })
                 this.scroll.on('beforeScrollStart',(pos)=>{
                     
@@ -113,35 +117,35 @@
                     url:'',
                     type: 0,
                     id: 25,
-                    text: '1数字货币交易所黑马,币倍8月11日开启创世矿工'
+                    text: '1数字货币交易所黑马,创世矿工创世矿工创世矿工创世矿工创世矿工'
                 },{
                     url:'',
                     type: 1,
                     id: 15,
-                    text: '2数字货币交易所黑马,币倍8月11日开启创世矿工'
+                    text: '2数字货币交易所黑马,创世矿工创世矿工创世矿工创世矿工创世矿工'
                 },{
                     url:'',
                     type: 0,
                     id: 54,
-                    text: '3数字货币交易所黑马,币倍8月11日开启创世矿工'
+                    text: '3数字货币交易所黑马,创世矿工创世矿工创世矿工创世矿工创世矿工'
                 },{
                     url:'',
                     type: 1,
                     id: 23,
-                    text: '4数字货币交易所黑马,币倍8月11日开启创世矿工'
+                    text: '4数字货币交易所黑马,创世矿工创世矿工创世矿工创世矿工创世矿工'
                 }],
                 flashList:[{
                     id: 10,
-                    text:'1数字货币交易所黑马，币倍8月11日开启创世矿工'
+                    text:'1数字货币交易所黑马，创世矿工创世矿工创世矿工创世矿工创世矿工'
                 },{
                     id: 20,
-                    text:'2数字货币交易所黑马，币倍8月11日开启创世矿工'
+                    text:'2数字货币交易所黑马，创世矿工创世矿工创世矿工创世矿工创世矿工'
                 },{
                     id: 30,
-                    text:'3数字货币交易所黑马，币倍8月11日开启创世矿工'
+                    text:'3数字货币交易所黑马，创世矿工创世矿工创世矿工创世矿工创世矿工'
                 },{
                     id: 40,
-                    text:'4数字货币交易所黑马，币倍8月11日开启创世矿工'
+                    text:'4数字货币交易所黑马，创世矿工创世矿工创世矿工创世矿工创世矿工'
                 }],
                 bannerOption:{},
                 flashOption:{
@@ -161,11 +165,10 @@
 <style lang="scss" scoped>
     
     .app-scroll-warpper{
-        position: fixed;
+        position: absolute;
         top: 1rem;
-        bottom: 1rem;
+        bottom: .2rem;
         left: 0;
-        height: 100%;
         width: 100%;
         overflow: hidden;
         transition: transform .1s;
@@ -182,7 +185,7 @@
             transform: translate3d(0,-.8rem,0);
         }
         .pull-up{
-            padding-bottom: 2rem;
+            
         }
         .pull-up,
         .drop-down{
@@ -223,7 +226,6 @@
     .app-newsflash {
         margin-bottom: .1rem;
         display: flex;
-        flex-warp: no-warp;
         overflow: hidden;
         height: 1rem;
         padding: .25rem .2rem;
@@ -288,9 +290,11 @@
         .content {
             position: relative;
             display: flex;
-            .text-ov2 {
-                color: #4e4e4e;
-                line-height: 1.5;
+            p.text-ov2 {
+                font-weight: 700;
+                &>a {
+                    color: #4e4e4e;
+                }
             }
             .ft {
                 position: absolute;

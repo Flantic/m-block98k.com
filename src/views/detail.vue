@@ -6,8 +6,24 @@
             </div>
         </div>
         <div class="article-content-warpper">
-            <h1 class="article-title">数字货币交易所黑马，币倍8月11日开启创世矿工。</h1>
-            <div class="article-author">
+            <div class="flash-header">
+                <div class="app-newsflash">
+                    <div class="flash-logo"></div>
+                    <div class="flash-preview">
+                        <div class="time-month">
+                            <p>8月</p>
+                            10
+                        </div> 
+                        <div class="time-day">
+                            <p>今天</p>
+                            星期五
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h1 class="article-title" v-if="type == 0">数字货币交易所黑马，币倍8月11日开启创世矿工。</h1>
+            <h1 class="article-title" v-else>动态 | Ultra Taiwan音乐节将采用区块链技术</h1>
+            <div class="article-author" v-if="type == 0">
                 <div class="head img-box">
                     <img src="../assets/img/item1.jpg" alt="">
                 </div>
@@ -19,18 +35,25 @@
                     </div>
                 </div>
             </div>
-            <div class="article-content">
+            <div class="article-content" v-if="type == 0">
                 <p>币倍（BeBay.io）交易所于2018年3月成立与新加坡，团队主要成员曾担任阿里巴巴，京东，富途，云币等区块链和互联网知名公司的要职，包括多名区块链早期入行者，在数字资产领域拥有丰富的技术研发及全球运营经验。</p>
                 <p><img src="../assets/img/m_block98k_10.png" alt=""></p>
                 <p>币倍（BeBay.io）交易所于2018年3月成立与新加坡，团队主要成员曾担任阿里巴巴，京东，富途，云币等区块链和互联网知名公司的要职，包括多名区块链早期入行者，在数字资产领域拥有丰富的技术研发及全球运营经验。</p>
                 <p>币倍（BeBay.io）交易所于2018年3月成立与新加坡，团队主要成员曾担任阿里巴巴，京东，富途，云币等区块链和互联网知名公司的要职，包括多名区块链早期入行者，在数字资产领域拥有丰富的技术研发及全球运营经验。</p>
             </div>
-            <div class="article-footer">
+            <div class="article-content" v-else>
+                <p>据prnewswire消息，即将于下个月举办的Ultra Taiwan 2018音乐节将采用区块链技术。据悉，区块链支付服务提供商Pundi X将与音乐节官方合作，提供超过3万张pundiXpass卡，可在35家不同的节日商店的区块链支付终端上进行付款。</p>
+            </div>
+            <div class="article-footer" v-if="type == 0">
                 本文经授权发布，不代表Block 98K立场。如若转载请联系原作则。
             </div>
+            <div class="article-footer flash" v-else>
+                <a href="">原文链接</a>
+                <div class="fr">分享</div>
+            </div>
         </div>
-        <div class="other-title">您可能感兴趣的文章</div>
-        <div class="app-news-content">
+        <div class="other-title" v-if="type == 0">您可能感兴趣的文章</div>
+        <div class="app-news-content" v-if="type == 0">
             <ul class="news-list">
                 <li class="list-item" v-for="i in 2">
                     <div class="top-info">
@@ -70,11 +93,71 @@
 
 <script>
     export default {
-
+        data(){
+            return {
+                type: 2
+            }
+        }
     }
 </script>
 
 <style lang="scss" scoped>
+    .app-newsflash {
+        display: flex;
+        overflow: hidden;
+        height: 1.2rem;
+        padding: .25rem 0;
+        margin-bottom: .2rem;
+        .flash-logo {
+            width: 1.9rem;
+            margin-right: .1rem;
+            background: url('../assets/img/m_block98k_13.png') no-repeat;
+            background-size: 100% auto;
+        }
+        .flash-preview {
+            display: flex;
+            border-left: .01rem solid #eee;
+            .time-month{
+                position: relative;
+                margin-left: .35rem;
+                padding-top: .35rem;
+                width: .7rem;
+                height: .7rem;
+                line-height: .35rem;
+                text-align: center;
+                color: #4e4e4e;
+                font-size: .18rem;
+                border: .01rem solid #f1f1f1;
+                border-radius: .05rem;
+                &>p{
+                    position: absolute;
+                    top: -.01rem;
+                    left: -.01rem;
+                    width: 104%;
+                    height: .35rem;
+                    padding-top: .01rem;
+                    color: #fff;
+                    background: #ff6c25;
+                    border-radius: .05rem;
+                    border-bottom-left-radius: 0;
+                    border-bottom-right-radius: 0;
+                    border: .01rem solid #ff6c25;
+                }
+            }
+            .time-day{
+                margin-left: .35rem;
+                height: .5rem;
+                color: #4e4e4e;
+                text-align: center;
+                line-height: .35rem;
+                font-size: .18rem;
+                &>p{
+                    font-size: .24rem;
+                    font-weight: 700;
+                }
+            }
+        }
+    }
     .app-article-detail {
         padding: 1rem 0 1.2rem;
     }
@@ -87,6 +170,8 @@
         height: .9rem;
         background: #fff;
         margin-bottom: .1rem;
+        box-shadow: 0 2px 6px 0 rgba(117, 117, 117, 0.1);
+        z-index: 99;
         .header-back {
             position: absolute;
             top: 0;
@@ -148,6 +233,7 @@
     }
 
     .article-content {
+        text-align: justify;
         p {
             line-height: 1.5;
             margin-bottom: .3rem;
@@ -168,6 +254,12 @@
         background: #f8f8f8;
         border-radius: .5rem;
         line-height: 1.5;
+        &.flash {
+            margin: 0 0 .4rem 0;
+            background: transparent;
+            width: 100%;
+            padding: 0;
+        }
     }
 
     .other-title {

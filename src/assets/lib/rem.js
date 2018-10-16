@@ -10,14 +10,14 @@ export default((win, value) => {
     }
     refreshRem();
 
-    win.addEventListener('resize', function () {
-        clearTimeout(tid);
-        tid = setTimeout(refreshRem, 300);
-    }, false);
-    win.addEventListener('pageshow', function (e) {
-        if (e.persisted) {
-            clearTimeout(tid);
-            tid = setTimeout(refreshRem, 300);
-        }
-    }, false);
+    // win.addEventListener('resize', function () {
+    //     clearTimeout(tid);
+    //     tid = setTimeout(refreshRem, 300);
+    // }, false);
+    // win.addEventListener('pageshow', function (e) {
+    //     if (e.persisted) {
+    //         clearTimeout(tid);
+    //         tid = setTimeout(refreshRem, 300);
+    //     }
+    // }, false);
 })(window)
